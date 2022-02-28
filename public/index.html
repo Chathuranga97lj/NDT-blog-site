@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Welcome to Firebase Hosting</title>
 
-    <!-- update the version number as needed 
+    update the version number as needed 
     <script defer src="/__/firebase/9.6.7/firebase-app-compat.js"></script>
    
-    <script defer src="/__/firebase/9.6.7/firebase-auth-compat.js"></script>
+    <!-- <script defer src="/__/firebase/9.6.7/firebase-auth-compat.js"></script>
     <script defer src="/__/firebase/9.6.7/firebase-database-compat.js"></script>
     <script defer src="/__/firebase/9.6.7/firebase-firestore-compat.js"></script>
     <script defer src="/__/firebase/9.6.7/firebase-functions-compat.js"></script>
     <script defer src="/__/firebase/9.6.7/firebase-messaging-compat.js"></script>
     <script defer src="/__/firebase/9.6.7/firebase-storage-compat.js"></script>
     <script defer src="/__/firebase/9.6.7/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.6.7/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.6.7/firebase-remote-config-compat.js"></script> 
     <script defer src="/__/firebase/9.6.7/firebase-performance-compat.js"></script>
-     
+      -->
       initialize the SDK after all desired features are loaded, set useEmulator to false
       to avoid connecting the SDK to running emulators.
-    -->
+    
     <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> 
@@ -29,12 +31,14 @@
   <body>
     <div class="w3-bar w3-light-grey w3-border">
       <a href="#" class="w3-bar-item w3-button w3-green" onclick="document.getElementById('id03').style.display='block'" ><i class="fa fa-home"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-search"></i></a>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
-      <a href="#" class="w3-bar-item w3-button" onclick="document.getElementById('id02').style.display='block'"><i class="fas fa-registered"></i></a>
+      <a href="./profile.html" class="w3-bar-item w3-button"><i class="fas fa-address-card"></i></a>
+      <a href="./about.html" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <a href="#" class="w3-bar-item w3-button" onclick="document.getElementById('id02').style.display='block'"><i class= "fas fa-user-plus"></i></a>
       <a href="#" class="w3-bar-item w3-button" onclick="document.getElementById('id01').style.display='block'"><i class="fas fa-sign-in-alt"></i></a>
+      <a href="#" class="w3-bar-item w3-button" id="signout"><i class="fas fa-power-off"></i></a>
       </div> 
 
+      <!-- ########## Log - in ##################################### -->
       <div id="id01" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
     
@@ -43,19 +47,23 @@
             <img src="https://www.w3schools.com/w3css/img_avatar4.png " alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
           </div>
     
-          <form class="w3-container" action="/action_page.php">
+          <form class="w3-container" id="login-form">
             <div class="w3-section">
-              <label><b>Username</b></label>
-              <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+              <!-- alert -->
+              <div class="w3-panel w3-leftbar w3-sand  w3-serif">
+                <p><i id="signin-status"></i></p>
+              </div> 
+              <label><b>Email</b></label>
+              <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Email" name="email" required>
               <label><b>Password</b></label>
-              <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+              <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="password" required>
               <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Login</button>
               <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
             </div>
           </form>  
         </div>
       </div>    
-        <!-- ######################################################################################--> 
+        <!-- ##############################---- Register -----------------################################################--> 
         
         <div id="id02" class="w3-modal">
           <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
@@ -65,12 +73,15 @@
               <img src="https://www.w3schools.com/w3css/img_avatar4.png " alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
             </div>
       
-            <form class="w3-container" action="/action_page.php">
+            <form class="w3-container" id="signup-form">
               <div class="w3-section">
-                <label><b>Username</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="usrname" required>
+                <div class="w3-panel w3-leftbar w3-sand w3-serif">
+                  <p><i id="signup-status"></i></p>
+                </div>
+                <label><b>Email</b></label>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Username" name="email" required>
                 <label><b>Password</b></label>
-                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="psw" required>
+                <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="password" required>
                 <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Register</button>
                 <input class="w3-check w3-margin-top" type="checkbox" checked="checked"> Remember me
               </div>  
