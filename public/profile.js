@@ -42,7 +42,7 @@ if(profile){
                                 localStorage.setItem("user", user);
                                 location.reload();
                             })
-                    } )
+                    })
         }
         
         );
