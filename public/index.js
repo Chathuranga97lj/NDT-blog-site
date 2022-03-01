@@ -51,7 +51,7 @@ if(signup) {
 onAuthStateChanged(auth, user => {
     if(user){
         console.log('====================================');
-        console.log(user.uid);
+        console.log(user.email);
         console.log('====================================');
     }
     else{
