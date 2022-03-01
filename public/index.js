@@ -50,14 +50,31 @@ if(signup) {
 // ################################################################
 onAuthStateChanged(auth, user => {
     if(user){
-        console.log('====================================');
-        console.log(user.email);
-        console.log('====================================');
+        
+        document.querySelectorAll('a[title=auth]').forEach(node => {
+            console.log(node);
+            node.style.display = 'block'
+        })
+        
+
+        document.querySelectorAll('a[title=authdone]').forEach(node => {
+            console.log(node);
+            node.style.display = 'none'
+        })
+
+        localStorage.setItem('uid', user.uid);
+        document.getElementById('panel').innerText = user.email;
     }
     else{
-        console.log('====================================');
-        console.log('user not found');
-        console.log('====================================');
+        document.querySelectorAll('a[title=auth]').forEach(node => {
+            console.log(node);
+            node.style.display = 'none'
+        })
+
+        document.querySelectorAll('a[title=authdone]').forEach(node => {
+            console.log(node);
+            node.style.display = 'block'
+        })
     }
 })
 
@@ -65,6 +82,11 @@ onAuthStateChanged(auth, user => {
 const signout_btn = document.getElementById('signout')
 
 if(signout_btn){
-    signOut(auth)
-    console.log("Log out");
+    
+    signout_btn.onclick = e => {
+        signOut(auth)
+            .then(() => {
+                localStorage.removeItem("user");
+            })
+    }
 }
